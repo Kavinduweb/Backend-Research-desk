@@ -7,8 +7,8 @@
     "node": "16.x"
   },
   "scripts": {
-    "start": "nodemon server.js",
-    "server": "nodemon index"
+    "start": "node server.js"
+    
   },
   "keywords": [],
   "author": "",
