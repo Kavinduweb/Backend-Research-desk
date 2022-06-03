@@ -108,6 +108,29 @@ const stdCtrl = {
         }
 
     },
+    getAllSTD: async (req, res) => {
+
+      try{
+        const users = await Studnet.find().select('-password')
+        res.json(users)
+
+
+      }catch (err){
+        return res.status(500).json({msg: err.message})
+      }
+    },
+    updateSTD: async (req, res) => {
+      try{
+        const {studentNumber, name,email} = req.body
+        await Studnet.findOneAndUpdate({_id:req.user.id}, {
+          studentNumber,name, email
+        })
+        res.json({msg: "update suucess"})
+  
+      }catch (err){
+        return res.status(500).json({msg: err.message})
+      }
+      }
 
 }
 const createActivationToken = (payload) => {
